@@ -18,6 +18,27 @@ a {
   text-decoration: none;
 }
 
+.navbar {
+  position: fixed;
+  top: 72px;
+  left: 0;
+}
+
+.navbar .nav-item {
+  margin-bottom: 8px;
+}
+
+.navbar .nav-link {
+  font-size: 24px;
+  color: rgba(0, 0, 0, .7);
+  display: block;
+  padding: 8px;
+}
+
+.navbar .nav-item:hover {
+  background-color: #00d4ff;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -26,7 +47,7 @@ a {
   min-height: 600px;
   background: #161a2b;
   text-align: center;
-  margin: 128px auto;
+  margin: 70px auto;
   border-radius: 10px;
   padding-bottom: 32px;
 }
@@ -40,7 +61,7 @@ a {
 .heading {
   color: #fff;
   margin-top: 16px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 
@@ -123,4 +144,10 @@ a {
   display: block;
   color: red;
   padding: 8px;
+  width: 150px;
+  margin: 16px auto
+}
+
+.clear-all:hover {
+  background-color: #ccc;
 }

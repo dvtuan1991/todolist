@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
 import { Todo } from '../../types/Todo'
-import { getMaxId } from '../../ultis/function'
 import TodoButton from './TodoButton'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
@@ -30,8 +29,7 @@ const TodoList = () => {
   const handClickAdd = () => {
     if(inputValue) {
     const list = [...listTodo];
-    const id = getMaxId(listTodo);
-    list.push({id, title: inputValue, isComplete: false});
+    list.push({id : Date.now(), title: inputValue, isComplete: false});
     setListTodo(list)
     setInputValue('')
     }
@@ -61,6 +59,7 @@ const TodoList = () => {
 
   return (
     <div className='container'>
+        <h2 className='heading'>Todo App with State</h2>
         <h3 className='heading'>You have {listTodo?.length} task for today</h3>
         <div className='todo-form'>
           <TodoInput name='Todo' placeholder='Add todo here' value={inputValue ? inputValue : ''} onChange={handleChangeValue} />

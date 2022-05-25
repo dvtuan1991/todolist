@@ -1,10 +1,8 @@
-import { listenerCount } from 'process';
+
 import React, { Component } from 'react'
 import { Todo } from '../../types/Todo'
 import TodoButton from './TodoButton';
-import Button from './TodoButton';
 import TodoInput from './TodoInput';
-import Input from './TodoInput';
 import TodoItem from './TodoItem'
 
 interface TodoListState {
@@ -43,32 +41,12 @@ class TodoList extends Component<{}, TodoListState> {
   }
 
   handClickAdd = (e: React.MouseEvent<HTMLElement>) => {
-    if (this.state.value) {
-      const listTodo = [...this.state.list];
-      if (listTodo.length > 1) {
-        const listTodoId: number[] = listTodo.map(todo => todo.id);
-        const maxId = Math.max(...listTodoId);
-        listTodo.push({
-          id: maxId + 1,
-          title: this.state.value,
-          isComplete: false
-        });
-      } else if (listTodo.length === 1) {
-        let id = listTodo[0].id + 1;
-        listTodo.push({
-          id,
-          title: this.state.value,
-          isComplete: false
-        })
-      } else {
-        listTodo.push({
-          id: 1,
-          title: this.state.value,
-          isComplete: false
-        })
-      };
-      this.setState({ list: listTodo, value: '' });
-    }
+   if(this.state.value) {
+     const listTodo = [...this.state.list, {
+      id: Date.now(), title: this.state.value, isComplete: false
+     }]
+     this.setState({list: listTodo, value: ''})
+   }
   }
 
   handleClickDelete = (id: number) => {
@@ -96,6 +74,7 @@ class TodoList extends Component<{}, TodoListState> {
   render() {
     return (
       <div className='container'>
+        <h2 className='heading'>Todo App With class</h2>
         <h3 className='heading'>You have {this.state.list.length} task for today</h3>
         <div className='todo-form'>
           <TodoInput name='Todo' placeholder='Add todo here' value={this.state.value} onChange={this.handleChangeValue} />

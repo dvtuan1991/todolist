@@ -6,9 +6,21 @@ import TodoButton from '../TodoButton';
 import TodoInput from '../TodoInput';
 import TodoItem from '../TodoItem';
 
+const init = [
+  {
+  id: 1,
+  title: 'Learn HTMl/Css',
+  isComplete: true
+},
+{
+  id: 2,
+  title: 'Learn Javasript',
+  isComplete: false
+}
+]
 
 export const TodoListReducer = () => {
-  const [listTodo, dispatch] = useReducer(todoReducer, [{ id: 1, title: 'Hi', isComplete: false }])
+  const [listTodo, dispatch] = useReducer(todoReducer, init)
   const [inputValue, setInputValue] = useState<string>();
 
   const handleChangeValue = (e: React.FormEvent<HTMLInputElement>) => {
@@ -24,9 +36,9 @@ export const TodoListReducer = () => {
     }
   }
 
-
   return (
     <div className='container'>
+      <h2 className='heading'>Todo App with UseReducer</h2>
       <h3 className='heading'>You have {listTodo?.length} task for today</h3>
       <div className='todo-form'>
         <TodoInput name='Todo' placeholder='Add todo here' value={inputValue ? inputValue : ''} onChange={handleChangeValue} />

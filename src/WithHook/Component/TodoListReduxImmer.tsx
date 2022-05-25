@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ActionTodoType } from '../../types/ReduceTodo'
-import { Todo } from '../../types/Todo'
+import { Todo, ReduxStore} from '../../types/Todo'
 import TodoButton from './TodoButton'
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
-import produce from 'immer'
 
 const TodoListReduxImmer = () => {
   const [inputValue, setInputValue] = useState<string>();
@@ -13,17 +12,18 @@ const TodoListReduxImmer = () => {
     setInputValue(e.currentTarget.value);
   };
 
-  const listTodo: Todo[] = useSelector<any, any>(state => produce(state))
-  console.log(listTodo);
-  
+  const reduxStore: ReduxStore = useSelector<ReduxStore, ReduxStore>(todo => todo)
+  const listTodo: Todo[] = reduxStore.todoReduxReducerImmer  
   const dispatch = useDispatch()
 
   const handleClickAdd = () => {
     inputValue && dispatch({type: ActionTodoType.ADD, payload: { id: Date.now(), title: inputValue, isComplete: false }})
     setInputValue('')
   }
+
   return (
     <div className='container'>
+      <h2 className='heading'>Todo App with Redux Immer</h2>
       <h3 className='heading'>You have {listTodo?.length} task for today</h3>
       <div className='todo-form'>
         <TodoInput name='Todo' placeholder='Add todo here' value={inputValue ? inputValue : ''} onChange={handleChangeValue} />
