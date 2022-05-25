@@ -1,4 +1,4 @@
-import { Action } from "history";
+
 import produce from "immer";
 import { ActionTodo, ActionTodoType } from "../types/ReduceTodo";
 import { Todo } from "../types/Todo";
@@ -14,12 +14,12 @@ const init = [{
   isComplete: false
 }]
 
-export const todoReduxReducerImmer = (todoList: Todo[] = init, action: ActionTodo): any => {
-  produce((todoList: Todo[], draft ) => {
-
+export const todoReduxReducerImmer = (todoList: Todo[] = init, action: ActionTodo): Todo[] => 
+  produce(todoList, (draft: Todo[])  => {
     const { type, payload } = action;
     switch (type) {
       case ActionTodoType.ADD: {
+        console.log(draft)
         draft.push(payload as Todo)
         break;
       };
@@ -30,6 +30,7 @@ export const todoReduxReducerImmer = (todoList: Todo[] = init, action: ActionTod
         }
         break;
       };
+      
       case ActionTodoType.Delete: {
         for (let i = 0; i < draft.length; i++) {
           if (draft[i].id === payload) {
@@ -49,5 +50,5 @@ export const todoReduxReducerImmer = (todoList: Todo[] = init, action: ActionTod
         return draft
     }
   })
-}
+
 

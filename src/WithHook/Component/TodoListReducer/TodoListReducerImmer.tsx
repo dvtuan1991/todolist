@@ -21,6 +21,7 @@ const TodoListReducerImmer = () => {
 
   return (
     <div className='container'>
+      <h2 className='heading'>Todo App with UseReducer Immer</h2>
       <h3 className='heading'>You have {listTodo?.length} task for today</h3>
       <div className='todo-form'>
         <TodoInput name='Todo' placeholder='Add todo here' value={inputValue ? inputValue : ''} onChange={handleChangeValue} />
