@@ -126,6 +126,7 @@ a {
   justify-content: center;
   border-radius: 50%;
   background-color: #000;
+  cursor: pointer;
 }
 
 .half-opacity {
@@ -138,6 +139,7 @@ a {
 
 .icon-delete {
   color: red;
+  cursor: pointer;
 }
 
 .clear-all {
@@ -145,7 +147,8 @@ a {
   color: red;
   padding: 8px;
   width: 150px;
-  margin: 16px auto
+  margin: 16px auto;
+  cursor: pointer;
 }
 
 .clear-all:hover {

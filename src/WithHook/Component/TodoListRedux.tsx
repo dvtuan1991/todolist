@@ -15,7 +15,8 @@ const TodoListRedux = () => {
   };
 
   const handleClickAdd = () => {
-    inputValue && dispatch({type: ActionTodoType.ADD, payload: { id: Date.now(), title: inputValue, isComplete: false }})
+    inputValue  && inputValue.trim() !== ''
+    && dispatch({type: ActionTodoType.ADD, payload: { id: Date.now(), title: inputValue, isComplete: false }})
     setInputValue('')
   }
 
@@ -35,7 +36,6 @@ const TodoListRedux = () => {
       {listTodo && listTodo.length > 0 &&
         <div>
           {listTodo?.map((todo: Todo) => {
-            console.log(todo)
             return (
               <div key={todo.id} className='todo-item'>
               <TodoItem todo={todo}
