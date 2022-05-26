@@ -33,7 +33,7 @@ class TodoList extends Component<{}, TodoListState> {
     this.setState({ list: listTodo })
   }
 
- 
+
 
   handleChangeValue = (e: React.FormEvent<HTMLInputElement>) => {
     let value: string = e.currentTarget.value;
@@ -41,12 +41,13 @@ class TodoList extends Component<{}, TodoListState> {
   }
 
   handClickAdd = (e: React.MouseEvent<HTMLElement>) => {
-   if(this.state.value) {
-     const listTodo = [...this.state.list, {
-      id: Date.now(), title: this.state.value, isComplete: false
-     }]
-     this.setState({list: listTodo, value: ''})
-   }
+    if (this.state.value && this.state.value.trim() !== '' ) {
+      const listTodo = [...this.state.list, {
+        id: Date.now(), title: this.state.value, isComplete: false
+      }]
+      this.setState({ list: listTodo })
+    }
+    this.setState({ value: '' })
   }
 
   handleClickDelete = (id: number) => {

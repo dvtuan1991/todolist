@@ -27,7 +27,7 @@ const TodoList = () => {
     setListTodo(list)
   },[])
   const handClickAdd = () => {
-    if(inputValue) {
+    if(inputValue && inputValue.trim() !== '') {
     const list = [...listTodo];
     list.push({id : Date.now(), title: inputValue, isComplete: false});
     setListTodo(list)

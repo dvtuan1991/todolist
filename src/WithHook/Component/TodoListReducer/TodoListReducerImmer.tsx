@@ -15,7 +15,8 @@ const TodoListReducerImmer = () => {
   };
 
   const handleClickAdd = () => {
-    inputValue && dispatch({type: ActionTodoType.ADD, payload: { id: Date.now(), title: inputValue, isComplete: false }})
+    inputValue && inputValue.trim() !== '' 
+    && dispatch({type: ActionTodoType.ADD, payload: { id: Date.now(), title: inputValue, isComplete: false }})
     setInputValue('')
   }
 

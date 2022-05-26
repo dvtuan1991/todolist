@@ -28,12 +28,9 @@ export const TodoListReducer = () => {
   };
 
   const handleClickAdd = () => {
-    if (inputValue) {
-      const todo: Todo = { id: Date.now(), title: inputValue, isComplete: false }
-      const action: ActionTodo = { type: ActionTodoType.ADD, payload: todo }
-      dispatch(action);
-      setInputValue('')
-    }
+    inputValue && inputValue.trim() !== '' 
+    && dispatch({type: ActionTodoType.ADD, payload: { id: Date.now(), title: inputValue, isComplete: false }})
+    setInputValue('')
   }
 
   return (
